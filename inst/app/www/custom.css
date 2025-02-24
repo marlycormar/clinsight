@@ -1,0 +1,63 @@
+
+.bslib-value-box .value-box-area {
+  padding: 0.1rem 0rem 0.1rem 1rem;
+}
+
+.bslib-value-box .value-box-area > :nth-child(2) {
+  content: '';
+  font-size: calc(4px + .6vw);
+}
+
+.bslib-value-box .value-box-area > :first-child {
+    font-size: calc(4px + .6vw);
+}
+
+.bslib-value-box .value-box-showcase {
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+}
+
+.bslib-value-box .value-box-showcase .fas {
+  font-size: 2rem;
+}
+
+
+/* Remove unneeded padding around the timeline figure */
+.timeline-fig-basic > .card-body {
+   padding-top: 0.2rem;
+   padding-right: 0rem;
+   padding-bottom: 0rem;
+   padding-left: 0rem;
+}
+
+/* below is needed for good alignment of the top-widgets */
+.bslib-card {
+  height:100%;
+}
+
+.top-widgets-ui{
+  height:100%;
+}
+
+
+.top-widgets-custom {
+  display:flex;
+  flex-direction: column;
+   padding-bottom: 0rem;
+/*  overflow-x: scroll;
+   padding-top: 1rem;
+   padding-right: 1rem;
+   padding-bottom: 0.5rem;
+   padding-left: 1rem; */
+}
+
+#shiny-notification-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  }
+
+div.datatables div.header {
+  text-align: center;
+  font-weight: bold;
+}
+
