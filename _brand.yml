@@ -24,6 +24,7 @@ color:
   palette:
     dark-blue: '#002B5C'
     light-blue: '#0057B8'
+    light-gray: '#abb8c3'
     teal: '#0097A9'
     orange: '#ffad12'
     yellow: '#FFC72C'
