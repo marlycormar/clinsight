@@ -1,0 +1,82 @@
+meta:
+  name:
+    short: Arcus Bio
+    full: Arcus Biosciences, Inc.
+  link:
+    home: https://arcusbio.com
+    linkedin: https://www.linkedin.com/company/arcus-biosciences
+    twitter: https://twitter.com/ArcusBio
+
+logo:
+  images:
+    header: logos/header-logo.png
+    header-white: logos/header-logo-white.png
+    full:
+      path: logos/full-logo.svg
+      alt: Arcus Biosciences logo
+  small: logos/icon.png
+  medium:
+    light: header
+    dark: header-white
+  large: full
+
+color:
+  palette:
+    dark-blue: "#002B5C"
+    light-blue: "#0057B8"
+    teal: "#0097A9"
+    orange: "#F15A22"
+    yellow: "#FFC72C"
+    white: "#FFFFFF"
+    black: "#000000"
+  foreground: black
+  background: white
+  primary: dark-blue
+  secondary: orange
+  success: "#2E8540"
+  info: teal
+  warning: orange
+  danger: "#C8102E"
+  light: "#F4F4F4"
+  dark: dark-blue
+
+typography:
+  fonts:
+    - family: Roboto
+      source: google
+      weight: [400, 700]
+      style: [normal, italic]
+    - family: Lora
+      source: google
+      weight: [400, 700]
+      style: [normal, italic]
+  base:
+    family: Poppins
+    weight: 400
+    size: 16px
+    line-height: 1.5
+  headings:
+    family: Lora
+    weight: 700
+    style: normal
+    line-height: 1.2
+    color: dark-blue
+  monospace:
+    family: "Courier New"
+    weight: 400
+    size: 0.9em
+  link:
+    weight: 600
+    color: dark-blue
+    decoration: underline
+
+defaults:
+  bootstrap:
+    defaults:
+      navbar-bg: 'white'
+  quarto:
+    format:
+  shiny:
+    theme:
+      defaults:
+        navbar-bg: "yellow"  # Dark Blue
