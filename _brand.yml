@@ -42,7 +42,7 @@ color:
 
 typography:
   fonts:
-    - family: Roboto
+    - family: Poppins
       source: google
       weight: [400, 700]
       style: [normal, italic]

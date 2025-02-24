@@ -1,5 +1,8 @@
 /*-- scss:defaults --*/
 
+/* Import font families. */
+@import "_fonts.scss";
+
 /* Set MIT color scheme */
 $colors-arcus: (
   // Core Palette
@@ -52,6 +55,3 @@ a.nav-link.active, a.nav-link:hover {
 /*------------------------------------------------------ */
 /*------------------------ GENERAL  -------------------- */
 /*------------------------------------------------------ */
-
-
-
