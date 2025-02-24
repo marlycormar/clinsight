@@ -9,8 +9,9 @@ $colors-arcus: (
   dark-blue: #002B5C,
   light-blue: #0057B8,
   teal: #0097A9,
-  orange: #F15A22,
+  orange: #ffad12,
   yellow: #FFC72C,
+  dark-yellow: #ffd35d,
   white: #FFFFFF,
   black: #000000
 );
@@ -49,6 +50,16 @@ a.nav-link {
 a.nav-link.active, a.nav-link:hover {
   border-bottom-color: map-get($colors-arcus, orange) !important;
   border-bottom-width: 5px !important;
+}
+
+
+/*------------------------------------------------------ */
+/*------------------------ BUTTONS  -------------------- */
+/*------------------------------------------------------ */
+
+
+.btn.btn-default.action-button {
+  /*color: white !important;*/
 }
 
 

@@ -22,22 +22,23 @@ logo:
 
 color:
   palette:
-    dark-blue: "#002B5C"
-    light-blue: "#0057B8"
-    teal: "#0097A9"
-    orange: "#F15A22"
-    yellow: "#FFC72C"
-    white: "#FFFFFF"
-    black: "#000000"
+    dark-blue: '#002B5C'
+    light-blue: '#0057B8'
+    teal: '#0097A9'
+    orange: '#ffad12'
+    yellow: '#FFC72C'
+    dark-yellow: '#ffd35d'
+    white: '#FFFFFF'
+    black: '#000000'
   foreground: black
   background: white
   primary: dark-blue
   secondary: orange
-  success: "#2E8540"
+  success: '#2E8540'
   info: teal
   warning: orange
-  danger: "#C8102E"
-  light: "#F4F4F4"
+  danger: '#C8102E'
+  light: '#F4F4F4'
   dark: dark-blue
 
 typography:
@@ -62,7 +63,7 @@ typography:
     line-height: 1.2
     color: dark-blue
   monospace:
-    family: "Courier New"
+    family: 'Courier New'
     weight: 400
     size: 0.9em
   link:
@@ -79,4 +80,4 @@ defaults:
   shiny:
     theme:
       defaults:
-        navbar-bg: "yellow"  # Dark Blue
+        navbar-bg: 'green'
