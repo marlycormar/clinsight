@@ -57,7 +57,6 @@ a.nav-link.active, a.nav-link:hover {
   border-bottom-width: 5px !important;
 }
 
-
 /*------------------------------------------------------ */
 /*------------------------ BUTTONS  -------------------- */
 /*------------------------------------------------------ */
@@ -67,6 +66,33 @@ a.nav-link.active, a.nav-link:hover {
   /*color: white !important;*/
 }
 
+/*------------------------------------------------------ */
+/*------------------------ SIDEBAR  -------------------- */
+/*------------------------------------------------------ */
+
+.sidebar {
+  /*background-color: map-get($colors-arcus, light-gray) !important;*/
+  background-image: url('/www/molecules.svg') !important;
+  background-repeat: repeat !important;
+  background-size: 100% 100% !important;
+}
+
+.sidebar .btn {
+  border-width: 2px !important;
+  border-color: map-get($colors-arcus, dark-blue) !important;
+  color: map-get($colors-arcus, dark-blue) !important;
+  background-color: map-get($colors-arcus, orange) !important;
+}
+
+.sidebar .btn:hover {
+  /*color: map-get($colors-arcus, orange) !important;*/
+  border-color: map-get($colors-arcus, orange) !important;
+  /*background-color: map-get($colors-arcus, dark-blue) !important;*/
+  transition-delay: 0s !important;
+  transition-duration: 0.3s !important;
+  transition-property: all !important;
+  transition-timing-function: ease-in-out !important;
+}
 
 /*------------------------------------------------------ */
 /*------------------------ GENERAL  -------------------- */
