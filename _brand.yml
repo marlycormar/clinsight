@@ -56,7 +56,7 @@ typography:
     size: 16px
     line-height: 1.5
   headings:
-    family: Lora
+    family: Poppins
     weight: 700
     style: normal
     line-height: 1.2
