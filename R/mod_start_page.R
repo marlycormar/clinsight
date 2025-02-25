@@ -8,7 +8,7 @@ mod_start_page_ui <- function(id){
   tagList(
     bslib::card(
       bslib::card_body(
-        h3(style = 'text-align: center', 'Start Review'),
+        h3(style = 'text-align: center; margin-top: 20px', 'Start Review'),
         br(),
         shinycssloaders::withSpinner(
         DT::DTOutput(ns("overview_table")), 
