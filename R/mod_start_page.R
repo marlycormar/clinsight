@@ -96,7 +96,8 @@ mod_start_page_server <- function(id, r, rev_data, navinfo, all_forms, table_nam
             list(width = '100px', targets = 4)),
           autoWidth = TRUE
         ),
-        class = list(stripe = FALSE))
+        class = list(stripe = FALSE),
+        escape = FALSE)
 
     })
  

@@ -563,16 +563,16 @@ datatable_custom <- function(
     pageLength = 10
   )
   fixed_opts <- list(
-    initComplete = DT::JS(
-      "function() {",
-      paste0(
-        "$(this.api().table().container()).find('.header').html(", 
-        htmltools::htmlEscape(deparse(title %||% "")), 
-        ")"
-        ),
-      "}"
-      ),
-    dom = gsub(pattern = "(t)", replacement = '<"header h5">\\1', dom)
+    # initComplete = DT::JS(
+    #   "function() {",
+    #   paste0(
+    #     "$(this.api().table().container()).find('.header').html(", 
+    #     htmltools::htmlEscape(deparse(title %||% "")), 
+    #     ")"
+    #     ),
+    #   "}"
+    #   ),
+    # dom = gsub(pattern = "(t)", replacement = '<"header h5">\\1', dom)
   )
   opts <- default_opts |>
     modifyList(options) |>
@@ -584,7 +584,6 @@ datatable_custom <- function(
     options = opts,
     extensions = extensions,
     plugins = plugins,
-    escape = FALSE,
     ...
   ) 
 }
