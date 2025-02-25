@@ -553,12 +553,14 @@ datatable_custom <- function(
   stopifnot(is.list(options))
   
   default_opts <- list(
-    scrollY = 400,
-    scrollX = TRUE,
-    scroller = TRUE,
-    deferRender = TRUE,
-    scrollResize = TRUE,
-    scrollCollapse = TRUE
+    # scrollY = 400,
+    # scrollX = TRUE,
+    # scroller = TRUE,
+    # deferRender = TRUE,
+    # scrollResize = TRUE,
+    # scrollCollapse = TRUE,
+    paging = TRUE,
+    pageLength = 10
   )
   fixed_opts <- list(
     initComplete = DT::JS(
@@ -582,6 +584,7 @@ datatable_custom <- function(
     options = opts,
     extensions = extensions,
     plugins = plugins,
+    escape = FALSE,
     ...
   ) 
 }

@@ -8,23 +8,19 @@ mod_start_page_ui <- function(id){
   tagList(
     bslib::card(
       bslib::card_body(
-        HTML("<h3 style='text-align:center'>", 
-             "Start review</h3>"),
-        HTML("<b>Bold</b>: New/updated forms are available.<br>"),
+        h3(style = 'text-align: center', 'Start Review'),
+        br(),
         shinycssloaders::withSpinner(
         DT::DTOutput(ns("overview_table")), 
         type = 5
         ),
         fillable = FALSE
-      ),
-      bslib::card_body(
-        mod_go_to_form_ui(ns("go_to_patient"), "Go to patient"),
-        actionButton(ns("go_to_nav_review"), 
-                     label = "Check forms to review",  
-                     class = "btn-primary m2"
-        ),
-        fillable = FALSE
-      )
+      )),
+    fluidRow(
+      column(6, mod_go_to_form_ui(ns("go_to_patient"), "Go to patient")),
+      column(6, actionButton(ns("go_to_nav_review"), 
+                             label = "Check forms to review",  
+                             class = "btn-primary m2"))
     )
   )
 }
@@ -83,18 +79,25 @@ mod_start_page_server <- function(id, r, rev_data, navinfo, all_forms, table_nam
     })
     
     output[["overview_table"]] <- DT::renderDataTable({
-      bold_rows <- which(rev_data$overview()[["needs_review"]])
-      tab <- datatable_custom(
-        dplyr::select(rev_data$overview(), -needs_review), 
-        rename_vars = table_names
-      )
-      if(length(bold_rows) == 0) return(tab)
-      DT::formatStyle(
-        tab,
-        0,
-        target = "row",
-        fontWeight = DT::styleEqual(bold_rows, "bold")
-        )
+      # Add icons.
+      data <- rev_data$overview() |>
+        dplyr::mutate('New/Updated' = dplyr::case_when(
+          needs_review == TRUE ~ bsicons::bs_icon('check2-circle', size = '1.5rem'),
+          FALSE ~ NA
+        ), .before = 1) |>
+        dplyr::select(-needs_review)
+      
+      datatable_custom(
+        data, 
+        rename_vars = table_names,
+        options = list(
+          columnDefs = list(
+            list(className = 'dt-center', targets = 1),
+            list(width = '100px', targets = 4)),
+          autoWidth = TRUE
+        ),
+        class = list(stripe = FALSE))
+
     })
  
   })

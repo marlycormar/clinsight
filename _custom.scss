@@ -95,7 +95,7 @@ a.nav-link.active, a.nav-link:hover {
 }
 
 /*------------------------------------------------------ */
-/*------------------------ GENERAL  -------------------- */
+/*---------------------- BACKGROUND  ------------------- */
 /*------------------------------------------------------ */
 
 
@@ -105,3 +105,64 @@ a.nav-link.active, a.nav-link:hover {
   background-repeat: repeat !important;
   background-size: 100% 100% !important;
 }
+
+
+/*------------------------------------------------------ */
+/*--------------------------- DT  ---------------------- */
+/*------------------------------------------------------ */
+
+li.previous a {
+  color: map-get($colors-arcus, dark-blue) !important;
+}
+
+/* Change text color of disabled "Previous" */
+.paginate_button.disabled .page-link {
+    color: gray !important;
+}
+
+
+.dataTable {
+  font-family: Poppins !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: -0.304px !important;
+  line-height: 26px !important;
+}
+
+/* Change header text color */
+.dataTables_wrapper .dataTables_filter label,
+.dataTables_wrapper .dataTables_length label,
+.dataTable thead th {
+  text-transform: uppercase !important;
+  color: map-get($colors-arcus, dark-blue) !important;
+}
+
+/* Change body text color */
+.dataTable tbody td {
+  color: map-get($colors-arcus, dark-blue) !important;
+}
+
+
+table.dataTable > tbody > tr.selected:hover > * {
+  color: white !important;
+}
+
+table.dataTable > tbody > tr.selected >* {
+  color: white !important;
+}
+
+/* Add top and bottom border to each row */
+.dataTable tbody td {
+    border-bottom: 0.5px solid  map-get($colors-arcus, light-gray) !important;
+}
+
+/* Optional: Make header and footer stand out */
+.dataTable thead th, .dataTable tfoot th {
+    border-bottom: 2px solid map-get($colors-arcus, light-gray) !important;
+}
+
+.datatables .dataTables_wrapper .dataTables_length select, 
+.datatables .dataTables_wrapper .dataTables_filter input {
+  border-bottom-color: map-get($colors-arcus, light-gray) !important;
+}
+
