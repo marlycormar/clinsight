@@ -54,7 +54,8 @@ Suggests:
     shinymanager,
     shinytest2,
     stringr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    bsicons
 VignetteBuilder: 
     knitr
 Config/renv/profiles/full/dependencies: pkgdown, stringr, kableExtra,
