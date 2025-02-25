@@ -118,10 +118,10 @@ mod_header_widgets_server <- function(id, r, rev_data, navinfo, events){
       req(inherits(all_AEs_reviewed(), "logical"), SAEvalue.individual(), 
           AEvalue.individual(), r$subject_id)
       bslib::value_box(
+        theme = if(all_AEs_reviewed()) "primary" else "warning",
         title = paste0("SAEs: ", SAEvalue.individual()), 
         value = paste0("AEs: ", AEvalue.individual()),
-        showcase = icon("house-medical", class = 'fa-2x'),
-        theme = if(all_AEs_reviewed()) "primary" else "warning" 
+        showcase = icon("house-medical", class = 'fa-2x')
       )
     })
     output[["visit_figure"]] <- renderPlot(

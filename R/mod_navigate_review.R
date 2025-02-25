@@ -8,13 +8,7 @@
 mod_navigate_review_ui <- function(id){
   ns <- NS(id)
   tagList(
-    bslib::value_box(
-      id = ns("review_value_box"),
-      title = "To review:",
-      theme = "primary",
-      value = uiOutput(ns("forms_to_review")),
-      showcase = icon("clipboard-list", class = 'fa-2x')
-    )
+    shiny::uiOutput(ns("review_value_box"))
   )
 }
 
@@ -113,6 +107,19 @@ mod_navigate_review_server <- function(
       showModal(modal_nav_review())
     }, ignoreInit = TRUE)
     
+    output[["review_value_box"]] <- renderUI({
+      
+      req(forms_to_review())
+      
+      bslib::value_box(
+        theme = "primary",
+        title = "To review:",
+        value = length(unique(forms_to_review())),
+        showcase = icon("clipboard-list", class = 'fa-2x')
+      )
+    }) 
+    
+    
     shinyjs::onclick("review_value_box", {
       golem::cat_dev("click on forms to review detected\n")
       shinyWidgets::updateMaterialSwitch(session, "show_all_data", value = FALSE)
@@ -169,10 +176,6 @@ mod_navigate_review_server <- function(
     
     forms_to_review <- reactive({
       with(rev_data$summary(), Form[subject_id == r$subject_id])
-    })
-    
-    output[["forms_to_review"]] <- renderText({
-      length(unique(forms_to_review()))
     })
     
   })
