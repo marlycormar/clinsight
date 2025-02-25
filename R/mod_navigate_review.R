@@ -112,10 +112,12 @@ mod_navigate_review_server <- function(
       req(forms_to_review())
       
       bslib::value_box(
+        class = 'value-box-widget',
         theme = "primary",
-        title = "To review:",
-        value = length(unique(forms_to_review())),
-        showcase = icon("clipboard-list", class = 'fa-2x')
+        title = "Records",
+        value = paste0('To Review: ', length(unique(forms_to_review()))),
+        showcase = bsicons::bs_icon('clipboard-data-fill', class = 'value-box-icon'),
+        showcase_layout = 'left center'
       )
     }) 
     

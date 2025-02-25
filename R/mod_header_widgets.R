@@ -10,9 +10,9 @@ mod_header_widgets_ui <- function(id){
       width = 1/3,
       style = bslib::css(grid_template_columns = "1fr 1fr 1fr"),
       mod_navigate_participants_ui("navigate_participants_1"),
-      shiny::uiOutput(ns("ae_box"), class = "top-widgets-ui"), 
-      mod_navigate_review_ui("navigate_review_1"),
-      class = "top-widgets-custom"),
+      shiny::uiOutput(ns("ae_box")), 
+      mod_navigate_review_ui("navigate_review_1")
+    ),
 
       bslib::card(
         min_height = "100px",
@@ -118,10 +118,11 @@ mod_header_widgets_server <- function(id, r, rev_data, navinfo, events){
       req(inherits(all_AEs_reviewed(), "logical"), SAEvalue.individual(), 
           AEvalue.individual(), r$subject_id)
       bslib::value_box(
+        class = 'value-box-widget',
         theme = if(all_AEs_reviewed()) "primary" else "warning",
-        title = paste0("SAEs: ", SAEvalue.individual()), 
-        value = paste0("AEs: ", AEvalue.individual()),
-        showcase = icon("house-medical", class = 'fa-2x')
+        title = 'Adverse Events', 
+        value = paste0("AEs: ", AEvalue.individual(), ", SAEs: ", SAEvalue.individual()),
+        showcase = bsicons::bs_icon('hospital-fill', class = 'value-box-icon')
       )
     })
     output[["visit_figure"]] <- renderPlot(

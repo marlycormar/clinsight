@@ -166,3 +166,13 @@ table.dataTable > tbody > tr.selected >* {
   border-bottom-color: map-get($colors-arcus, light-gray) !important;
 }
 
+/*------------------------------------------------------ */
+/*------------------------ BSICONS  -------------------- */
+/*------------------------------------------------------ */
+
+.value-box-widget {
+  color: map-get($colors-arcus, orange) !important;
+  background-color: white !important;
+  border-color: map-get($colors-arcus, darl-blue) !important;
+}
+

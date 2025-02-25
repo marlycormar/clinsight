@@ -6,7 +6,7 @@
 mod_navigate_participants_ui <- function(id){
   ns <- NS(id)
   tagList(
-    shiny::uiOutput(ns("subject_info"), class = "top-widgets-ui")
+    shiny::uiOutput(ns("subject_info"))
   )
 }
     
@@ -133,7 +133,7 @@ mod_navigate_participants_server <- function(id, r){
       if(!is.null(general_info_missing_error())) {
         list(
           pt_info = HTML("<i>! Data missing</i>"),
-          status_icon = icon("circle-question", class = 'fa-2x')
+          status_icon = bsicons::bs_icon('patch-question-fill', class = 'value-box-icon')
         )
       } else{
         active_pt_info <- r$filtered_tables$General |> 
@@ -142,10 +142,10 @@ mod_navigate_participants_server <- function(id, r){
           pt_info = paste0(active_pt_info$Sex, ", ", active_pt_info$Age, "yrs."),
           status_icon = switch(
             active_pt_info$status, 
-            Enrolled = icon("user-check", class = 'fa-2x'),
-            Unknown  = icon("circle-question", class = 'fa-2x'),
-            `Screen failure` = icon("user-slash", class = 'fa-2x'),
-            icon("user-slash", class = 'fa-2x')
+            Enrolled = bsicons::bs_icon('person-fill-check', class = 'value-box-icon'),
+            Unknown  = bsicons::bs_icon('person-fill-exclamation', class = 'value-box-icon'),
+            `Screen failure` = bsicons::bs_icon('person-fill-slash', class = 'value-box-icon'),
+            bsicons::bs_icon('person-fill-slash', class = 'value-box-icon')
           )
         )
       }
@@ -154,8 +154,9 @@ mod_navigate_participants_server <- function(id, r){
     output[["subject_info"]] <- renderUI({
       
       bslib::value_box(
+        class = 'value-box-widget',
         theme = "primary",
-        title = gsub("IME-", "", as.character(unique(r$subject_id)[1])),
+        title = paste0('Subject: ', gsub("IME-", "", as.character(unique(r$subject_id)[1]))),
         value = subject_info()$pt_info,
         showcase = subject_info()$status_icon
       )
