@@ -6,20 +6,19 @@
 mod_header_widgets_ui <- function(id){
   ns <- NS(id)
   tagList(
-        bslib::layout_column_wrap(
-          width = NULL,
-          fixed_width = FALSE, 
-          style = bslib::css(grid_template_columns = "1fr 1fr 1fr 3fr"),
-          mod_navigate_participants_ui("navigate_participants_1"),
-          shiny::uiOutput(ns("ae_box"), class = "top-widgets-ui"), 
-          mod_navigate_review_ui("navigate_review_1"),
-          bslib::card(
-          max_height = "75px",
-          plotOutput(ns("visit_figure"), height = "auto"),
-          # to change the padding with css:
-          class = "timeline-fig-basic"
-        ),
-        class = "top-widgets-custom"
+    bslib::layout_column_wrap(
+      width = 1/3,
+      style = bslib::css(grid_template_columns = "1fr 1fr 1fr"),
+      mod_navigate_participants_ui("navigate_participants_1"),
+      shiny::uiOutput(ns("ae_box"), class = "top-widgets-ui"), 
+      mod_navigate_review_ui("navigate_review_1"),
+      class = "top-widgets-custom"),
+
+      bslib::card(
+        min_height = "100px",
+        plotOutput(ns("visit_figure"), height = "100%", inline = TRUE),
+        # to change the padding with css:
+        class = "timeline-fig-basic"
     )
   )
 }
@@ -71,7 +70,7 @@ mod_header_widgets_server <- function(id, r, rev_data, navinfo, events){
       r$filtered_tables$`Adverse events` |> 
         dplyr::filter(subject_id == as.character(r$subject_id)) |> 
         dplyr::distinct(subject_id, form_repeat, `Serious Adverse Event`)
-      })
+    })
     
     observeEvent(r$subject_id, {
       req(r$subject_id != "")
@@ -79,16 +78,16 @@ mod_header_widgets_server <- function(id, r, rev_data, navinfo, events){
       
       AEvalue.individual(
         sum(AEvals_active()[["Serious Adverse Event"]] != "Yes", na.rm = T)
-        )
+      )
       SAEvalue.individual(
         sum(AEvals_active()[["Serious Adverse Event"]] == "Yes", na.rm = T)
       ) 
     })
     simple_timeline_data <- reactive({
       bind_rows_custom(r$filtered_data, "item_value") |> 
-      dplyr::select(dplyr::all_of(c("subject_id", "event_name", 
-                                    "event_label", "item_name"))) |> 
-      dplyr::distinct()
+        dplyr::select(dplyr::all_of(c("subject_id", "event_name", 
+                                      "event_label", "item_name"))) |> 
+        dplyr::distinct()
     })
     
     selected_individual_data <- reactiveVal()
@@ -109,12 +108,12 @@ mod_header_widgets_server <- function(id, r, rev_data, navinfo, events){
       req(rev_data$summary())
       req(r$subject_id)
       revs <- with(rev_data$summary(), reviewed[
-             subject_id == r$subject_id & Form == "Adverse events"])
+        subject_id == r$subject_id & Form == "Adverse events"])
       !("No" %in% revs)
     })
     
     ### Outputs: 
-
+    
     output[["ae_box"]] <- renderUI({
       req(inherits(all_AEs_reviewed(), "logical"), SAEvalue.individual(), 
           AEvalue.individual(), r$subject_id)
