@@ -1,4 +1,4 @@
-
+/*
 .bslib-value-box .value-box-area {
   padding: 0.1rem 0rem 0.1rem 1rem;
 }
@@ -19,35 +19,30 @@
 .bslib-value-box .value-box-showcase .fas {
   font-size: 2rem;
 }
-
+*/
 
 /* Remove unneeded padding around the timeline figure */
-.timeline-fig-basic > .card-body {
+/*.timeline-fig-basic > .card-body {
    padding-top: 0.2rem;
    padding-right: 0rem;
    padding-bottom: 0rem;
    padding-left: 0rem;
-}
+}*/
 
 /* below is needed for good alignment of the top-widgets */
-.bslib-card {
+/*.bslib-card {
   height:100%;
 }
 
 .top-widgets-ui{
   height:100%;
-}
+}*/
 
-
+/*
 .top-widgets-custom {
   display:flex;
   flex-direction: column;
    padding-bottom: 0rem;
-/*  overflow-x: scroll;
-   padding-top: 1rem;
-   padding-right: 1rem;
-   padding-bottom: 0.5rem;
-   padding-left: 1rem; */
 }
 
 #shiny-notification-panel {
@@ -56,4 +51,4 @@
   left: 0;
   }
 
-
+*/
