@@ -52,7 +52,7 @@ mod_review_forms_ui <- function(id){
             icon = icon("floppy-disk"),
             class = "btn-primary m2"
           ),
-          textOutput(ns("save_review_error"))
+          htmlOutput(ns("save_review_error"))
         )
       )
     )
@@ -302,28 +302,26 @@ mod_review_forms_server <- function(
     
     output[["review_header"]] <- renderText({active_form()})
     
-    output[["save_review_error"]] <- renderPrint({
-      validate(need(
-        role_allowed_to_review(), 
-        paste0("Review not allowed for a '", r$user_role, "'.")
-        ))
-      validate(need(
-        review_required(), 
-        "Review not required"
-      ))
-      validate(need(
-        nrow(review_data_active()) != 0,
-        "Nothing to review"
-      ))
-      validate(need(
-        user_allowed_to_review(), 
-        "No user name found. Cannot save review"
-      ))
-      validate(need(
-        !review_data_active()$reviewed == "Yes",
-        "Form already reviewed"
-      ))
-      validate(need(input$form_reviewed, "Requires review"))
+    output[["save_review_error"]] <- renderUI({
+      
+      note_to_display <- ''
+      
+      if(!role_allowed_to_review())
+        note_to_display <- paste0("Warning: Review not allowed for a '", r$user_role, "'.")
+      else if(!review_required())
+        note_to_display <- 'Note: No review required.'
+      else if(nrow(review_data_active()) == 0)
+        note_to_display <- 'Note: No review required.'
+      else if(!user_allowed_to_review())
+        note_to_display <- 'Warning: No user name found. Cannot save review.'
+      else if(review_data_active()$reviewed == "Yes")
+        note_to_display <- 'Note: Form already reviewed.'
+      else if(!input$form_reviewed)
+        note_to_display <- 'Warning: Requires review.'
+      
+       p(note_to_display, style = 'color: gray !important;
+         font-size: 10pt !important; font-style: italic !important;
+         font-weight: 100')
     })
     
   })
