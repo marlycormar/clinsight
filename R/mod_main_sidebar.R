@@ -5,22 +5,9 @@
 #' 
 mod_main_sidebar_ui <- function(id){
   ns <- NS(id)
+  
   tagList(
-    tabsetPanel(
-      id = ns("show_review_controls"),
-      type = "hidden",
-      tabPanel("panel_empty", ""),
-      tabPanel(
-        "panel_controls", 
-        bslib::card( 
-          bslib::card_header(mod_navigate_forms_ui(ns("navigate_forms_1"))),
-          htmltools::HTML("<br><br>"),
-          mod_review_forms_ui(ns("review_forms_1")),
-          htmltools::HTML("<hr><br>"),
-          mod_query_add_ui(ns("write_query"))
-        )
-      )
-    ),
+    uiOutput(ns('side_card')),
     htmltools::HTML("<br><br><br><br>"),
     mod_review_config_ui(ns("review_config_1")),
     mod_db_synch_info_ui(ns("synch_info"))
@@ -90,15 +77,28 @@ mod_main_sidebar_server <- function(
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     
-    observeEvent(navinfo$active_tab, {
+    side_card <- eventReactive(navinfo$active_tab, {
+      
       req(navinfo$active_tab)
-      check_box_tab <- ifelse(navinfo$active_tab %in% c("Common events", "Study data"), 
-                              "panel_controls", "panel_empty")
-      shiny::updateTabsetPanel(
-        session = session,
-        inputId = "show_review_controls",
-        selected = check_box_tab
-      )
+      
+      #' Show side-card only for the 'Common Events' and 'Study Data' tabs.
+      if(navinfo$active_tab %in% c("Common events", "Study data"))
+          bslib::card( 
+            bslib::card_header(mod_navigate_forms_ui(ns("navigate_forms_1"))),
+            'testing....2',
+            htmltools::HTML("<br><br>"),
+            mod_review_forms_ui(ns("review_forms_1")),
+            htmltools::HTML("<hr><br>"),
+            mod_query_add_ui(ns("write_query")))
+      else
+        tagList()
+    })
+    
+
+    output$side_card <- renderUI({
+      req(side_card())
+      
+      side_card()
     })
     
     mod_query_add_server(
