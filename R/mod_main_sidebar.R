@@ -85,7 +85,6 @@ mod_main_sidebar_server <- function(
       if(navinfo$active_tab %in% c("Common events", "Study data"))
           bslib::card( 
             bslib::card_header(mod_navigate_forms_ui(ns("navigate_forms_1"))),
-            'testing....2',
             htmltools::HTML("<br><br>"),
             mod_review_forms_ui(ns("review_forms_1")),
             htmltools::HTML("<hr><br>"),
