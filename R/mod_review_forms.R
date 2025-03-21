@@ -46,7 +46,8 @@ mod_review_forms_ui <- function(id){
        br(),
         tagList(
           shiny::actionButton(
-            inputId = ns("save_review"), 
+            inputId = ns("save_review"),
+            width = '100%',
             "Save", 
             icon = icon("floppy-disk"),
             class = "btn-primary m2"
