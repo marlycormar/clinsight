@@ -13,8 +13,7 @@ mod_review_forms_ui <- function(id){
       tabPanel("empty_panel", ""),
       tabPanel(
         "show_checkbox",
-        bslib::layout_columns(
-          col_widths = c(7, 5),
+       tagList(
           bslib::tooltip(
             checkboxInput(
               inputId = ns("form_reviewed"),
@@ -44,8 +43,8 @@ mod_review_forms_ui <- function(id){
             label = NULL
           )
         ),
-        bslib::layout_columns(
-          col_widths = c(11, 12),
+       br(),
+        tagList(
           shiny::actionButton(
             inputId = ns("save_review"), 
             "Save", 
