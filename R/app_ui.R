@@ -20,8 +20,11 @@ app_ui <- function(request){
         href = "/",
         tags$img(src='www/header-logo.png', width ='100')
       ), 
-      sidebar = bslib::sidebar(mod_main_sidebar_ui("main_sidebar_1")),
-      header =   conditionalPanel(
+      sidebar = bslib::sidebar(
+        width = '300',
+        mod_main_sidebar_ui("main_sidebar_1")
+      ),
+      header = conditionalPanel(
         condition = "!['Start', 'Queries', 'Create Report'].includes(input.main_tabs)",
         mod_header_widgets_ui("header_widgets_1")
       ),
@@ -34,12 +37,12 @@ app_ui <- function(request){
         bslib::navset_tab(id = "common_data_tabs") 
       ),
       bslib::nav_panel(
-        "Study data", 
+        title = "Study data", 
         bslib::navset_tab(id = "study_data_tabs")
       ),
       bslib::nav_spacer(),
       bslib::nav_panel(
-        "Queries", 
+        title = "Queries", 
         mod_queries_ui("queries_1")
       ),
       bslib::nav_item(
