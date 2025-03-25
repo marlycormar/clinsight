@@ -32,7 +32,7 @@ mod_review_forms_ui <- function(id){
               value = FALSE
             ), 
             "Add a comment",
-            placement = "right", options = list(`offset` = "0,-25")
+            placement = "bottom"
           )
         ),
         conditionalPanel(
@@ -300,7 +300,9 @@ mod_review_forms_server <- function(
       showNotification("Input saved successfully", duration = 1, type = "message") 
     })
     
-    output[["review_header"]] <- renderText({active_form()})
+    # output[["review_header"]] <- renderText({
+    #   active_form()
+    # })
     
     output[["save_review_error"]] <- renderUI({
       
