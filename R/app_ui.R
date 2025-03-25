@@ -12,13 +12,13 @@ app_ui <- function(request){
       id = "main_tabs",
       window_title = "Interactive Trial Safety Surveillance Tool",
       theme = bslib::bs_theme(
-        brand = "_brand.yml",
+        brand = "inst/app/www/theme/_brand.yml",
         version = "5"
         ) |>
-        bslib::bs_add_rules(sass::sass_file("_custom.scss")),
+        bslib::bs_add_rules(sass::sass_file("inst/app/www/theme/_custom.scss")),
       title = tags$a(
         href = "/",
-        tags$img(src='www/header-logo.png', width ='100')
+        tags$img(src = 'www/imgs/header-logo.png', width ='100')
       ), 
       sidebar = bslib::sidebar(
         width = '300',

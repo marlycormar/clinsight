@@ -9,12 +9,12 @@ meta:
 
 logo:
   images:
-    header: logos/header-logo.png
-    header-white: logos/header-logo-white.png
+    header: ../imgs/header-logo.png
+    header-white: ../imgs/header-logo-white.png
     full:
-      path: logos/full-logo.svg
+      path: ../imgs/full-logo.svg
       alt: Arcus Biosciences logo
-  small: logos/icon.png
+  small: ../imgs/icon.png
   medium:
     light: header
     dark: header-white
