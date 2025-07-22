@@ -67,14 +67,11 @@ errors might occur during installation.
 ``` r
 renv::lockfile_read()$R
 #> $Version
-#> [1] "4.4.1"
+#> [1] "4.5.1"
 #> 
 #> $Repositories
 #> $Repositories$RSPM
-#> [1] "https://packagemanager.posit.co/cran/2024-09-17"
-#> 
-#> $Repositories$RSPM2
-#> [1] "https://packagemanager.posit.co/cran/2025-04-01"
+#> [1] "https://packagemanager.posit.co/cran/2025-07-16"
 ```
 
 Another option for installing clinsight is simply directly installing
